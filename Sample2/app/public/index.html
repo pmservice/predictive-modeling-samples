@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+		<meta charset="utf-8">
+		<title>IBM SPSS Predictive Modeling service Time Series sample scoring application</title>
+		<link rel="stylesheet" href="css/type.css" type="text/css" media="screen, projection" />
+		<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen, projection" />
+		<!-- Twitter Bootstrap -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">  
+<head>
+</head>
+	<body ng-app="tsSample" ng-controller="AppCtrl" >
+	<div class="title"><img alt="" src="img/pm24x24.png" />&nbsp;IBM SPSS Predictive Modeling service <b>"{{modelType[mIdx]}}"</b> scoring applicaiton</div>
+	<div class="body">
+		<div class="section">
+			Catalog Sales:&nbsp;&nbsp;
+					<input type="radio" ng-model="mIdx" value="0">Men's Clothing</input>&nbsp;&nbsp;
+					<input type="radio" ng-model="mIdx" value="1">Women's Clothing</input><br>
+			<div class="section">
+				<div ng-repeat="sval in sales track by $index">
+					Sales Input: {{$index +1}}  <input type="numeric" ng-model="sales[$index]" required></input><br /><br />
+				</div>
+			</div>
+			<button type="button" class="btn.lg" ng-click="score()"><i class="glyphicon glyphicon-cloud-upload"></i>&nbsp;Score Now&nbsp;</button>
+		</div>
+	</div>	
+	
+	</body>
+	
+	<!-- load angular via CDN -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>    
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>    
+	<!-- our scripts -->
+	<script src="js/app.js"  type="text/javascript" ></script>
+	<script src="js/srv.js"  type="text/javascript" ></script>
+</html>

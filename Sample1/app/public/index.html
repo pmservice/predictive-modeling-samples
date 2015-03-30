@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+		<meta charset="utf-8">
+		<title>IBM SPSS Predictive Modeling service Drug 1N sample scoring application</title>
+		<link rel="stylesheet" href="css/type.css" type="text/css" media="screen, projection" />
+		<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen, projection" />
+		<!-- Twitter Bootstrap -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">  
+<head>
+</head>
+	<body ng-app="drug1nSample" ng-controller="AppCtrl" >
+	<div class="title"><img alt="" src="img/pm24x24.png" />&nbsp;IBM SPSS Predictive Modeling service "Drug 1N" scoring applicaiton</div>
+	<div class="body">
+		<div class="section">
+				Age: <input type="text" ng-model="p.Age" size="4" required><br>
+				<br>
+				Sex:&nbsp;&nbsp; 
+					<input type="radio" ng-model="p.Sex" value="M">Male</input>&nbsp;&nbsp;
+					<input type="radio" ng-model="p.Sex" value="F">Female</input><br>
+				<br>
+				Blood Test Results:<br>
+				<br>
+				&nbsp;&nbsp;Blood Pressure:&nbsp;&nbsp;  
+					<input type="radio" ng-model="p.BP" value="HIGH">HIGH</input>&nbsp;&nbsp;
+					<input type="radio" ng-model="p.BP" value="NORMAL">NORMAL</input>&nbsp;&nbsp;
+					<input type="radio" ng-model="p.BP" value="LOW">LOW</input><br>
+				<br>
+				&nbsp;&nbsp;LDL (bad) Cholesterol:&nbsp;&nbsp;
+					<input type="radio" ng-model="p.Cholesterol" value="HIGH">HIGH</input>&nbsp;&nbsp;
+					<input type="radio" ng-model="p.Cholesterol" value="NORMAL">NORMAL</input>&nbsp;&nbsp;
+					<input type="radio" ng-model="p.Cholesterol" value="LOW">LOW</input><br>
+				<br>
+				&nbsp;&nbsp;Sodium Level: <input type="text" ng-model="p.Na" size="4" required><br>
+				<br>
+				&nbsp;&nbsp;Potassium Level: <input type="text" ng-model="p.K" size="4" required>
+		</div>
+		<div class="section">
+			<button type="button" class="btn.lg" ng-click="score()"><i class="glyphicon glyphicon-cloud-upload"></i>&nbsp;Score Now&nbsp;</button>
+		</div>
+	</div>	
+	
+	</body>
+	
+	<!-- load angular via CDN -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>    
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>    
+	<!-- our scripts -->
+	<script src="js/app.js"  type="text/javascript" ></script>
+	<script src="js/srv.js"  type="text/javascript" ></script>
+</html>
