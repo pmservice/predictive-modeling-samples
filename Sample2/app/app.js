@@ -23,9 +23,32 @@ var defaultAccessKey = '"RN7dXYh3I1SN7bUERez7heVKlT/WlwSj/NeKfDJRae2+PZlbL/N9xlY
 // VCAP_SERVICES contains all the credentials of services bound to
 // this application. For details of its content, please refer to
 // the document or sample of each service.
+
+
 var env = { baseURL: defaultBaseURL, accessKey: defaultAccessKey };
+
+//{
+//  "VCAP_SERVICES": {
+//    "pm-20": [
+//      {
+//        "credentials": {
+//          "access_key": "access key",
+//          "url": "scoring server url"
+//        },
+//        "label": "pm-20",
+//        "name": "Predictive Modeling-ct",
+//        "plan": "free",
+//        "tags": [
+//          "business_analytics",
+//          "ibm_created",
+//          "ibm_beta"
+//        ]
+//      }
+//    ]
+//  }
+//}
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
-var service = (services['pm-20'] || "{}");
+var service = (services['pm-20'][0] || "{}");
 var credentials = service.credentials;
 if (credentials != null) {
 		env.baseURL = credentials.url;
