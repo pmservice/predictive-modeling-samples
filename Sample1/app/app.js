@@ -3,6 +3,7 @@
 // =============================================================================
 
 var path			 	= require('http');
+var path			 	= require('https');
 var path			 	= require('path');
 var bodyParser 	= require('body-parser');
 var express    	= require('express');
@@ -17,8 +18,8 @@ app.use(bodyParser.json());
 var port = (process.env.VCAP_APP_PORT || process.env.PORT || 3000);
 var host = (process.env.VCAP_APP_HOST || process.env.HOST || 'localhost');
 
-var defaultBaseURL = 'http://174.36.238.2:8080/pm/v1';
-var defaultAccessKey = '"RN7dXYh3I1SN7bUERez7heVKlT/WlwSj/NeKfDJRae2+PZlbL/N9xlY7qTyT6aFSAYQkw6NgWybMaYjDTp79RUobIVlG1IeQ7q9Rj5UWY8YTTLAJGF4ElIB0i/GuoBqH9QOqkQHf6lcUAtPWEqeSEw=="';
+var defaultBaseURL = '<from your service instance on Bluemix>';
+var defaultAccessKey = '<from your service instance on Bluemix>';
 
 // VCAP_SERVICES contains all the credentials of services bound to
 // this application. For details of its content, please refer to
@@ -46,8 +47,8 @@ var env = { baseURL: defaultBaseURL, accessKey: defaultAccessKey };
 //  }
 //}
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
-var service = (services['pm-20'][0] || "{}");
-var credentials = service.credentials;
+var service = (services['pm-20'] || "{}");
+var credentials = service[0].credentials;
 if (credentials != null) {
 		env.baseURL = credentials.url;
 		env.accessKey = credentials.access_key;
@@ -77,7 +78,7 @@ console.log('  URI  : ' + scoreURI);
 console.log('  Input: ' + JSON.stringify(req.body.input));
 console.log(' ');
 	try {
-		var r = request({	uri: scoreURI, method: "POST", json: req.body.input });
+		var r = request.post(scoreURI, { json: true, body: req.body.input });
 		req.pipe(r);
 		r.pipe(res);
 	} catch (e) {
